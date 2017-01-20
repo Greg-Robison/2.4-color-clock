@@ -1,0 +1,20 @@
+body{
+  background-color: #898989;
+  color: #fff;
+  font-family: herculanum;
+  text-align: center;
+}
+
+h1{
+  text-align: center;
+  font-weight: bold;
+}
+
+.clock{
+  font-size: 100px;
+}
+
+ .clock .h::after, .clock .m::after{
+  content: ":";
+  padding-left: 10px;
+}
