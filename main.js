@@ -1,12 +1,11 @@
-// (function(){
-//   "use strict";
+(function(){
+  "use strict";
 
 function showTime() {
     var x = new Date();
     var h = x.getHours();// 0-23
     var m = x.getMinutes();// 0-59
     var s = x.getSeconds();// 0-59
-
     if(h == 0){
       h = 12;
     }
@@ -22,38 +21,50 @@ function showTime() {
     if (s < 10){
       s = "0" + s;
     }
+
     var time = h + ":" + m + ":" +  s;
     document.getElementById("MyClockDisplay").innerText = time;
-    document.getElementById("MyClockDisplay");
-    setTimeout(showTime, 1000);
+    var color = "#"+h+m+s;
+    var color2 = "#"+m+s+h;
+    var color3 = "#"+s+h+m;
+    console.log (color);
+    var timeLine = s / 60 * 100;
+    console.log(timeLine);
+    document.getElementById("timeBar").style.width = timeLine + "%";
+    if (s % 3 == 0){
+    document.body.style.backgroundColor = color2;
+    document.getElementById("timeBar").style.backgroundColor = color3;
+    document.body.style.color = color;
+  }
+    if (s % 3 == 1){
+    document.body.style.backgroundColor = color3;
+    document.getElementById("timeBar").style.backgroundColor = color;
+    document.body.style.color = color2;
+  }
+    if (s % 3 == 2 ){
+    document.body.style.backgroundColor = color;
+    document.getElementById("timeBar").style.backgroundColor = color2;
+    document.body.style.color = color3;
+  }
+    // onmouseover=document.getElementById('MyClockDisplay')=color;
+
+  document.body.style.backgroundColor = 'radial-gradient(color + ', ' + color1 + )';
+
+
+
+
+
 }
+
     showTime();
 
-
-
-  //   function millisecondsToInterval(ms){
-  //
-  //   var msInHour = 60000 * 60;
-  //   var msInMinute = 60000;
-  //   var msInSecond = 1000;
-  //
-  //   var hourCount = Math.floor(msLeft / msInHour);
-  //
-  //   var minutesCount = Math.floor(msLeft / msInMinute);
-  //
-  //   var secondsCount = Math.floor(msLeft / msInSecond);
-  //
-  //   return [hourCount, minutesCount, secondsCount];
-  // }
-
-  // function printToScreen (interval){
-  //   hours.textContent = ("0" + interval[0]);
-  //   minutes.textContent = ("0" + interval[1]);
-  //   seconds.textContent = ("0" + interval[2]);
-  // }
+    setInterval(showTime, 1000);
 
 
 
 
 
-// }());
+
+
+
+}());

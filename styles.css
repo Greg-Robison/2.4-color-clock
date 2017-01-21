@@ -1,5 +1,5 @@
 body{
-  background-color: #898989;
+  background-color: : radial-gradient,(pink, #ffe9a9);
   color: #fff;
   font-family: herculanum;
   text-align: center;
@@ -13,7 +13,15 @@ h1{
 .clock{
   font-size: 100px;
 }
-
+.clock:hover{
+  color: pink;
+}
+.timeBar{
+  height: 10px;
+  background-color: orange;
+  text-align: center;
+  width: 100%;
+}
  .clock .h::after, .clock .m::after{
   content: ":";
   padding-left: 10px;
