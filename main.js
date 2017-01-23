@@ -1,11 +1,14 @@
 (function(){
   "use strict";
+// var hov = document.getElementById("MyClockDisplay").innerText = time;
+var isHovering = false;
 
 function showTime() {
     var x = new Date();
     var h = x.getHours();// 0-23
     var m = x.getMinutes();// 0-59
     var s = x.getSeconds();// 0-59
+
     if(h == 0){
       h = 12;
     }
@@ -23,42 +26,78 @@ function showTime() {
     }
 
     var time = h + ":" + m + ":" +  s;
-    document.getElementById("MyClockDisplay").innerText = time;
-    var color = "#"+h+m+s;
-    var color2 = "#"+m+s+h;
-    var color3 = "#"+s+h+m;
-    console.log (color);
-    var timeLine = s / 60 * 100;
-    console.log(timeLine);
-    document.getElementById("timeBar").style.width = timeLine + "%";
-    if (s % 3 == 0){
-    document.body.style.backgroundColor = color2;
-    document.getElementById("timeBar").style.backgroundColor = color3;
-    document.body.style.color = color;
-  }
-    if (s % 3 == 1){
-    document.body.style.backgroundColor = color3;
-    document.getElementById("timeBar").style.backgroundColor = color;
-    document.body.style.color = color2;
-  }
-    if (s % 3 == 2 ){
+    var ch = h.toString(16);
+    console.log('h', h);
+    console.log('ch', ch);
+    var cm = m.toString(16);
+    var cs = s.toString(16);
+
+    var color = "#" + ch + cm + cs;
+
+
+
+
+    // var color = "#" + h + m + s;
+
+    if(isHovering) {
+      document.getElementById("MyClockDisplay").innerText = color;
+    } else {
+      document.getElementById("MyClockDisplay").innerText = time;
+    }
+
+
+
+
     document.body.style.backgroundColor = color;
-    document.getElementById("timeBar").style.backgroundColor = color2;
-    document.body.style.color = color3;
-  }
-    // onmouseover=document.getElementById('MyClockDisplay')=color;
 
-  document.body.style.backgroundColor = 'radial-gradient(color + ', ' + color1 + )';
+    console.log ('color', color);
+    // document.getElementById("MyClockDisplay").innerText = time;
+    var timeLine = s / 60 * 100;
+    console.log('timeline', timeLine);
+    document.getElementById("timeBar").style.width = timeLine + "%";
 
+    // var clockDisplay;
+    //
+    // if (isHovering){
+    //   clockDisplay = color;
+    // }
+    // else {
+    //   clockDisplay = time;
+    // }
 
-
-
-
+  // function isInside(node, target) {
+  //   for (; node != null; node = node.parentNode)
+  //     if (node == target) return true;
+  // }
 }
 
-    showTime();
+var hov = document.getElementById("MyClockDisplay");
 
-    setInterval(showTime, 1000);
+hov.addEventListener("mouseover", function () {
+  isHovering = true;
+  // document.getElementById("MyClockDisplay").innerText = color;
+});
+
+hov.addEventListener("mouseout", function() {
+  isHovering = false;
+  // document.getElementById("MyClockDisplay").innerText = time;
+});
+// function handleMouseOver(){
+//   isHovering = true;
+// }
+// function handleMouseOut(){
+//   isHovering = false;
+// }
+// hov.addEventListener(mo)
+
+
+ showTime();
+
+
+
+
+setInterval(showTime, 100);
+
 
 
 

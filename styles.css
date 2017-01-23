@@ -1,6 +1,7 @@
 body{
   background-color: : radial-gradient,(pink, #ffe9a9);
   color: #fff;
+  margin-top: 200px;
   font-family: herculanum;
   text-align: center;
 }
@@ -12,17 +13,18 @@ h1{
 
 .clock{
   font-size: 100px;
+  color: white;
 }
-.clock:hover{
-  color: pink;
-}
+
 .timeBar{
+
   height: 10px;
   background-color: orange;
   text-align: center;
+  border-style: hidden;
   width: 100%;
 }
- .clock .h::after, .clock .m::after{
+ /*.clock .h::after, .clock .m::after{
   content: ":";
   padding-left: 10px;
 }
